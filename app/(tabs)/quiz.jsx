@@ -1,29 +1,20 @@
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StatusBar } from "expo-status-bar";
+import Instructions from '../../components/Instructions';
+import QuizPage from '../../components/QuizPage';
 
-const genres = [
-    { title: '  Focus', image: require('../../assets/images/nature.jpg') }, 
-    { title: '  Relax', image: require('../../assets/images/nature.jpg') },
-    { title: '  Meditate', image: require('../../assets/images/nature.jpg') },
-    { title: '  Motivation', image: require('../../assets/images/nature.jpg') }
-];
+const Stack = createStackNavigator();
 
-export default function TabThreeScreen() {
+export default function TabfourScreen() {
   return (
     <SafeAreaView style={styles.container}>
-        <LinearGradient colors={['#151452', '#3533cd']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.background}>
-            <ScrollView>
-                <Text style={styles.titleText}>Genres</Text>
-                {genres.map((genre) => (
-                    <TouchableOpacity style={styles.card}>
-                        <ImageBackground style={styles.cardImage} source={genre.image} resizeMode='cover'>
-                            <LinearGradient colors={['rgba(0, 0, 150, 0.4)', 'transparent']} style={styles.overlayView} />
-                            <Text style={styles.cardText}>{genre.title}</Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
-        </LinearGradient>
+               <Stack.Navigator>
+                <Stack.Screen name="Instructions" component={Instructions} />
+                   <Stack.Screen name="QuizPage" component={QuizPage} />
+               </Stack.Navigator>
     </SafeAreaView>
   );
 }
