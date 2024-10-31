@@ -3,8 +3,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from "expo-status-bar";
-import Instructions from '../../components/Instructions';
-import QuizPage from '../../components/QuizPage';
 
 const Stack = createStackNavigator();
 
