@@ -65,13 +65,13 @@ export default function TabSixScreen() {
                         onPress={toggleShowPassword}
                     />
             </View>
+            <View style={styles.remeberMeContainer}>
+                <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
+                <Text style={{color: 'white'}}>Remeber Me</Text>
+            </View>
             <TouchableOpacity style={styles.signinBtn}>
                 <Text style={styles.btnText}>Log in</Text>
             </TouchableOpacity>
-            <View style={styles.remeberMeContainer}>
-                <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
-                <Text>Remeber Me</Text>
-            </View>
         </View>
     </SafeAreaView>
   );
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         width: '77%',
         height: '10%',
-        marginBottom: 20,
+        marginBottom: 5,
         padding: 10
     },
     signinBtn: {
@@ -156,13 +156,17 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     remeberMeContainer: {
+        width: '77%',
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'flex-end',
+        marginBottom: 10
     },
     checkbox: {
         borderColor: 'white',
-        borderWidth: 2,
-        width: 20,
-        height: 20,
+        borderWidth: 1,
+        width: 12,
+        height: 12,
+        marginRight: 5
     },
 });

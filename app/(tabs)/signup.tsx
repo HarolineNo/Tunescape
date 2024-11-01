@@ -1,14 +1,43 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function TabFiveScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordMatch, setPasswordMatch] = useState('');
+    const navigation = useNavigation();
+    
+    const handleSubmit = () => {
+        if (password != passwordMatch) {
+            setPasswordMatch('Password do not match');
+        }
+        else if (password == passwordMatch) {
+            setPasswordMatch('');
+            navigation.navigate('Login');
+        }
+    }; 
+
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
+    };
+
+    const checkTextInput = () => {
+        if (!email.trim()) {
+            alert('Please enter email')
+        }
+        if (!password.trim()) {
+            alert('Please enter password')
+        }
+        if (!confirmPassword.trim()) {
+            alert('Please confirm password')
+        }
+        else {
+            handleSubmit();
+        }
     };
 
     return (
@@ -44,7 +73,23 @@ export default function TabFiveScreen() {
                         onPress={toggleShowPassword}
                     />
             </View>
-            <TouchableOpacity style={styles.signinBtn}>
+            <View style={styles.passwordContainer}>
+                <TextInput 
+                    style={styles.passwordField} 
+                    secureTextEntry={!showPassword}
+                    placeholder="  Confirm Password" 
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                />
+                    <MaterialCommunityIcons 
+                        name={showPassword ? 'eye-off' : 'eye'}
+                        size={24}
+                        color='white'
+                        onPress={toggleShowPassword}
+                    />
+            </View>
+            {passwordMatch ? <Text style={{color: 'red'}}>{passwordMatch}</Text> : null}
+            <TouchableOpacity style={styles.signinBtn} onPress={checkTextInput}>
                 <Text style={styles.btnText}>Sign up</Text>
             </TouchableOpacity>
         </View>
