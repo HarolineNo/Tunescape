@@ -3,6 +3,11 @@ import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, Touc
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store';
 import Checkbox from 'expo-checkbox';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from './index';
+
+type loginScreen = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 
 export default function TabSixScreen() {
@@ -10,6 +15,12 @@ export default function TabSixScreen() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [remeber, setRemeber] = useState(false);
+    const navigation = useNavigation<loginScreen>();
+
+    const switchScreen = () => {
+        navigation.navigate('Signup');
+    };
+
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -37,7 +48,7 @@ export default function TabSixScreen() {
         <View style={styles.signinContainer}>
             <Text style={styles.titleText}>Tunescape</Text>
             <View style={styles.chooseBtns}>
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={switchScreen}>
                     <Text style={styles.btnText}>Sign up</Text>
                 </TouchableOpacity> 
                 <TouchableOpacity style={styles.activeBtn}>

@@ -2,24 +2,30 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from './index';
+
+type signupScreen = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 
 export default function TabFiveScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [passwordMatch, setPasswordMatch] = useState('');
-    const navigation = useNavigation();
+    const navigation = useNavigation<signupScreen>();
     
     const handleSubmit = () => {
-        if (password != passwordMatch) {
+        if (password != confirmPassword) {
             alert('Passwords do not match');
         }
-        else if (password == passwordMatch) {
-            setPasswordMatch('');
+        else if (password == confirmPassword) {
             navigation.navigate('Login');
         }
     }; 
+
+    const switchScreen = () => {
+        navigation.navigate('Login');
+    };
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -48,7 +54,7 @@ export default function TabFiveScreen() {
                 <TouchableOpacity style={styles.activeBtn}>
                     <Text style={styles.btnText}>Sign up</Text>
                 </TouchableOpacity> 
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={switchScreen}>
                     <Text style={styles.btnText}>Log in</Text>
                 </TouchableOpacity>
             </View>
