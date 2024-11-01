@@ -25,7 +25,7 @@ export default function TabFiveScreen() {
             </View>
             <TextInput 
                 style={styles.inputField} 
-                placeholder="Email address" 
+                placeholder="  Email address" 
                 value={email}
                 onChangeText={setEmail}
             />
@@ -33,7 +33,7 @@ export default function TabFiveScreen() {
                 <TextInput 
                     style={styles.passwordField} 
                     secureTextEntry={!showPassword}
-                    placeholder="Enter Password" 
+                    placeholder="  Enter Password" 
                     value={password}
                     onChangeText={setPassword}
                 />
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#2e2cb2',
         height: '60%',
-        width: '80%',
+        width: '85%',
         borderRadius: 20
     },
     titleText: {
@@ -77,19 +77,20 @@ const styles = StyleSheet.create({
     },
     chooseBtns: {
         flexDirection: 'row',
-        width: '80%',
+        width: '85%',
+        height: '11%',
         justifyContent: 'center',
         marginBottom: 50,
         marginTop: 20,
     },
     activeBtn: {
         borderRadius: 10,
-        width: '30%',
+        width: '40%',
         backgroundColor: '#c5d6ff',
     },
     btn: {
         borderRadius: 10,
-        width: '30%',
+        width: '40%',
         backgroundColor: 'blue',
         marginLeft: 30,
     },
@@ -99,15 +100,14 @@ const styles = StyleSheet.create({
         padding: 10,
         color: 'white',
         textAlign: 'center',
-        alignContent: 'center',
     },
     inputField: {
         backgroundColor: '#7797e8',
         height: '10%',
-        width: '70%',
+        width: '77%',
         borderRadius: 5,
         marginBottom: 20,
-        padding: 20
+        padding: 10
     },
     passwordField: {
         flex: 1,
@@ -118,15 +118,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#7797e8',
         borderRadius: 5,
-        width: '70%',
+        width: '77%',
         height: '10%',
         marginBottom: 20,
-        padding: 20
+        padding: 10
     },
     signinBtn: {
         borderRadius: 10,
-        width: '70%',
-        height: '15%',
+        width: '77%',
+        height: '11%',
         backgroundColor: 'blue',
         marginTop: 10
     },
