@@ -72,37 +72,42 @@ const styles = StyleSheet.create({
     },
     titleText: {
         color: 'white',
-        padding: 20,
         fontSize: 40,
         textAlign: 'center',
     },
     chooseBtns: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
         width: '80%',
+        justifyContent: 'center',
+        marginBottom: 50,
+        marginTop: 20,
     },
     activeBtn: {
         borderRadius: 10,
-        width: '25%',
+        width: '30%',
         backgroundColor: '#c5d6ff',
     },
     btn: {
         borderRadius: 10,
-        width: '25%',
+        width: '30%',
         backgroundColor: 'blue',
+        marginLeft: 30,
     },
     btnText: {
+        flex: 1,
         fontSize: 24,
         padding: 10,
         color: 'white',
         textAlign: 'center',
+        alignContent: 'center',
     },
     inputField: {
         backgroundColor: '#7797e8',
         height: '10%',
         width: '70%',
-        borderRadius: 5
+        borderRadius: 5,
+        marginBottom: 20,
+        padding: 20
     },
     passwordField: {
         flex: 1,
@@ -114,11 +119,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#7797e8',
         borderRadius: 5,
         width: '70%',
-        height: '10%'
+        height: '10%',
+        marginBottom: 20,
+        padding: 20
     },
     signinBtn: {
         borderRadius: 10,
-        width: '80%',
+        width: '70%',
+        height: '15%',
         backgroundColor: 'blue',
+        marginTop: 10
     },
 });
