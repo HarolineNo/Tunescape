@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as SecureStore from 'expo-secure-store';
+import Checkbox from 'expo-checkbox';
 
 
 export default function TabSixScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [remeber, setRemeber] = useState(false);
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+    const remeberMe = async () => {
+        if (remeber) {
+            await SecureStore.setItemAsync('email', email);
+            await SecureStore.setItemAsync('password', password);
+        }
+    };
+    useEffect(() => {
+        const checkLogin = async () => {
+            const storedEmail = await SecureStore.getItemAsync('email');
+            const storedPassword = await SecureStore.getItemAsync('password');
+
+            if (storedEmail && storedPassword) {
+                setEmail(storedEmail);
+                setPassword(storedPassword);
+            }
+        };
+        checkLogin();
+    }, []);
 
     return (
     <SafeAreaView style={styles.container}>
@@ -47,6 +68,10 @@ export default function TabSixScreen() {
             <TouchableOpacity style={styles.signinBtn}>
                 <Text style={styles.btnText}>Log in</Text>
             </TouchableOpacity>
+            <View style={styles.remeberMeContainer}>
+                <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
+                <Text>Remeber Me</Text>
+            </View>
         </View>
     </SafeAreaView>
   );
@@ -129,5 +154,15 @@ const styles = StyleSheet.create({
         height: '11%',
         backgroundColor: 'blue',
         marginTop: 10
+    },
+    remeberMeContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+    },
+    checkbox: {
+        borderColor: 'white',
+        borderWidth: 2,
+        width: 20,
+        height: 20,
     },
 });
