@@ -1,18 +1,52 @@
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function TabFiveScreen() {
-  return (
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    return (
     <SafeAreaView style={styles.container}>
         <View style={styles.signinContainer}>
             <Text style={styles.titleText}>Tunescape</Text>
-            <TouchableOpacity style={styles.activeBtn}>
-                <Text style={styles.btnText}>Signup</Text>
-            </TouchableOpacity> 
-            <TouchableOpacity style={styles.btn}>
-                <Text style={styles.btnText}>Login</Text>
+            <View style={styles.chooseBtns}>
+                <TouchableOpacity style={styles.activeBtn}>
+                    <Text style={styles.btnText}>Sign up</Text>
+                </TouchableOpacity> 
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Log in</Text>
+                </TouchableOpacity>
+            </View>
+            <TextInput 
+                style={styles.inputField} 
+                placeholder="Email address" 
+                value={email}
+                onChangeText={setEmail}
+            />
+            <View style={styles.passwordContainer}>
+                <TextInput 
+                    style={styles.passwordField} 
+                    secureTextEntry={!showPassword}
+                    placeholder="Enter Password" 
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                    <MaterialCommunityIcons 
+                        name={showPassword ? 'eye-off' : 'eye'}
+                        size={24}
+                        color='white'
+                        onPress={toggleShowPassword}
+                    />
+            </View>
+            <TouchableOpacity style={styles.signinBtn}>
+                <Text style={styles.btnText}>Sign up</Text>
             </TouchableOpacity>
-            <TextInput style={styles.inputField}></TextInput>
         </View>
     </SafeAreaView>
   );
@@ -29,6 +63,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     signinContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#2e2cb2',
         height: '60%',
         width: '80%',
@@ -40,15 +76,21 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: 'center',
     },
+    chooseBtns: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '80%',
+    },
     activeBtn: {
         borderRadius: 10,
         width: '25%',
-        backgroundColor: 'blue',
+        backgroundColor: '#c5d6ff',
     },
     btn: {
         borderRadius: 10,
         width: '25%',
-        backgroundColor: '#c5d6ff',
+        backgroundColor: 'blue',
     },
     btnText: {
         fontSize: 24,
@@ -59,38 +101,24 @@ const styles = StyleSheet.create({
     inputField: {
         backgroundColor: '#7797e8',
         height: '10%',
-        width: '70%'
+        width: '70%',
+        borderRadius: 5
     },
-    headerImage: {
-        color: '#808080',
-        bottom: -90,
-        left: -35,
-        position: 'absolute',
+    passwordField: {
+        flex: 1,
     },
-    card: {
-        backgroundColor: '#fff',
-        marginBottom: 30,
-        marginLeft: '2%',
-        width: '96%',
-        borderRadius: 20,
-        resizeMode: 'cover',
-        height: 150,
-        shadowColor: 'rgba(0, 0, 0, 0.5)',
-        shadowRadius: 10,
-        shadowOffset: {
-            width: 3, 
-            height: 3
-        },
-        overflow: 'hidden'
+    passwordContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#7797e8',
+        borderRadius: 5,
+        width: '70%',
+        height: '10%'
     },
-    cardImage: {
-        height: '100%',
-        width: '100%',
+    signinBtn: {
+        borderRadius: 10,
+        width: '80%',
+        backgroundColor: 'blue',
     },
-    overlayView: {
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgba(119, 151, 232, 0.7)'
-    }
 });
