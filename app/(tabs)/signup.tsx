@@ -13,7 +13,7 @@ export default function TabFiveScreen() {
     
     const handleSubmit = () => {
         if (password != passwordMatch) {
-            setPasswordMatch('Password do not match');
+            alert('Passwords do not match');
         }
         else if (password == passwordMatch) {
             setPasswordMatch('');
@@ -88,7 +88,6 @@ export default function TabFiveScreen() {
                         onPress={toggleShowPassword}
                     />
             </View>
-            {passwordMatch ? <Text style={{color: 'red'}}>{passwordMatch}</Text> : null}
             <TouchableOpacity style={styles.signinBtn} onPress={checkTextInput}>
                 <Text style={styles.btnText}>Sign up</Text>
             </TouchableOpacity>
