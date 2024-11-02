@@ -8,7 +8,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './index';
 import { RadioButton } from 'react-native-paper';
 import { BlurView } from 'expo-blur';
-import { LinearGradient } from 'expo-linear-gradient'; //
+import { LinearGradient } from 'expo-linear-gradient'; 
 
 
 type QuizScreen = NativeStackNavigationProp<RootStackParamList, 'Quiz'>;
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(150,150,150,0.15)',
     },
     selectedOption: {
-        backgroundColor: 'rgba(0, 255, 233, 1)', 
+        backgroundColor: 'rgb(0, 255, 233)', 
     },
     selectedOptionText: {
         color: 'black', 

@@ -6,6 +6,9 @@ import Checkbox from 'expo-checkbox';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './index';
+import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient'; 
+
 
 type loginScreen = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -45,45 +48,55 @@ export default function TabSixScreen() {
 
     return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.signinContainer}>
-            <Text style={styles.titleText}>Tunescape</Text>
-            <View style={styles.chooseBtns}>
-                <TouchableOpacity style={styles.btn} onPress={switchScreen}>
-                    <Text style={styles.btnText}>Sign up</Text>
-                </TouchableOpacity> 
-                <TouchableOpacity style={styles.activeBtn}>
-                    <Text style={styles.btnText}>Log in</Text>
-                </TouchableOpacity>
-            </View>
-            <TextInput 
-                style={styles.inputField} 
-                placeholder="  Email address" 
-                value={email}
-                onChangeText={setEmail}
-            />
-            <View style={styles.passwordContainer}>
-                <TextInput 
-                    style={styles.passwordField} 
-                    secureTextEntry={!showPassword}
-                    placeholder="  Enter Password" 
-                    value={password}
-                    onChangeText={setPassword}
-                />
-                    <MaterialCommunityIcons 
-                        name={showPassword ? 'eye-off' : 'eye'}
-                        size={24}
-                        color='white'
-                        onPress={toggleShowPassword}
-                    />
-            </View>
-            <View style={styles.remeberMeContainer}>
-                <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
-                <Text style={{color: 'white'}}>Remeber Me</Text>
-            </View>
-            <TouchableOpacity style={styles.signinBtn}>
-                <Text style={styles.btnText}>Log in</Text>
-            </TouchableOpacity>
-        </View>
+        <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
+            <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
+            <ImageBackground source={require('../../assets/images/dots-bg.png')} resizeMode='cover' style={styles.image}>
+                <View style={styles.signinContainer}>
+                    <BlurView intensity={30} style={styles.blurView} />
+                    <Text style={styles.titleText}>Tunescape</Text>
+                    <View style={styles.chooseBtns}>
+                        <TouchableOpacity style={styles.btn} onPress={switchScreen}>
+                            <Text style={styles.btnText}>Sign up</Text>
+                        </TouchableOpacity> 
+                        <TouchableOpacity style={styles.activeBtn}>
+                            <Text style={styles.btnText}>Log in</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.passwordContainer}>
+                        <TextInput 
+                            style={styles.passwordField} 
+                            placeholder="  Email address" 
+                            value={email}
+                            onChangeText={setEmail}
+                        />
+                    </View>
+                    <View style={styles.passwordContainer}>
+                        <TextInput 
+                            style={styles.passwordField} 
+                            secureTextEntry={!showPassword}
+                            placeholder="  Enter Password" 
+                            value={password}
+                            onChangeText={setPassword}
+                        />
+                            <MaterialCommunityIcons 
+                                name={showPassword ? 'eye-off' : 'eye'}
+                                size={24}
+                                color='white'
+                                onPress={toggleShowPassword}
+                            />
+                    </View>
+                    <View style={styles.remeberMeContainer}>
+                        <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
+                        <Text style={{color: 'white'}}>Remeber Me</Text>
+                    </View>
+                    <TouchableOpacity style={styles.signinBtn}>
+                        <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                            <Text style={styles.btnText}>Sign up</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+        </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -98,13 +111,22 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
     },
-    signinContainer: {
+    image: {
+        flex: 1,
         justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+    },
+    signinContainer: {
         alignItems: 'center',
-        backgroundColor: '#2e2cb2',
-        height: '60%',
-        width: '85%',
-        borderRadius: 20
+        justifyContent: 'center',
+        width: '95%',
+        borderRadius: 20,
+        borderWidth: 2,
+        backgroundColor: 'rgba(150,150,150,0.15)',
+        borderColor: 'rgba(255,255,255,0.25)',
+        marginHorizontal: 'auto',
+        overflow: 'hidden',
     },
     titleText: {
         color: 'white',
@@ -113,22 +135,21 @@ const styles = StyleSheet.create({
     },
     chooseBtns: {
         flexDirection: 'row',
-        width: '85%',
+        width: '77%',
         height: '11%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         marginBottom: 50,
         marginTop: 20,
     },
     activeBtn: {
         borderRadius: 10,
         width: '40%',
-        backgroundColor: '#c5d6ff',
-        marginLeft: 30,
+        backgroundColor: 'rgb(0, 166, 255)',
     },
     btn: {
         borderRadius: 10,
         width: '40%',
-        backgroundColor: 'blue',
+        backgroundColor: 'rgb(0, 75, 224)',
     },
     btnText: {
         flex: 1,
@@ -137,14 +158,6 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
     },
-    inputField: {
-        backgroundColor: '#7797e8',
-        height: '10%',
-        width: '77%',
-        borderRadius: 5,
-        marginBottom: 20,
-        padding: 10
-    },
     passwordField: {
         flex: 1,
     },
@@ -152,11 +165,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#7797e8',
+        backgroundColor: 'rgba(255,255,255,0.5)',
         borderRadius: 5,
         width: '77%',
         height: '10%',
-        marginBottom: 5,
+        marginBottom: 20,
         padding: 10
     },
     signinBtn: {
@@ -179,5 +192,17 @@ const styles = StyleSheet.create({
         width: 12,
         height: 12,
         marginRight: 5
+    },
+    blurView: {
+        ...StyleSheet.absoluteFillObject,
+        borderRadius: 20, 
+    },
+    gradientBtn: {
+        flex: 1,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: 50,
     },
 });
