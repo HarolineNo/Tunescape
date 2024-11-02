@@ -14,6 +14,7 @@ import Question2 from './question2';
 import Question3 from './question3';
 import Question4 from './question4';
 import TabThreeScreen from './genres';
+import MusicPlayer from './musicPlayer';
 
 export type RootStackParamList = {
   Signup: undefined;
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   Question3: undefined;
   Question4: undefined;
   Genres: undefined;
+  MusicPlayer: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,6 +41,7 @@ export default function HomeScreen() {
       <Stack.Screen name='Question3' component={Question3} options={{ headerShown: false }} />
       <Stack.Screen name='Question4' component={Question4} options={{ headerShown: false }} />
       <Stack.Screen name='Genres' component={TabThreeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='MusicPlayer' component={MusicPlayer} options={{ headerShown: false }} />
     </Stack.Navigator>  
   );
 }

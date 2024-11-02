@@ -1,5 +1,7 @@
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
+
 
 const genres = [
     { title: '  Focus', image: require('../../assets/images/nature.jpg') }, 
@@ -12,7 +14,8 @@ export default function TabThreeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-        <LinearGradient colors={['#151452', '#3533cd']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.background}>
+        <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
+            <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
             <ScrollView>
                 <Text style={styles.titleText}>Genres</Text>
                 {genres.map((genre) => (
@@ -24,7 +27,7 @@ export default function TabThreeScreen() {
                     </TouchableOpacity>
                 ))}
             </ScrollView>
-        </LinearGradient>
+        </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -47,6 +50,12 @@ const styles = StyleSheet.create({
         bottom: -90,
         left: -35,
         position: 'absolute',
+    },
+    image: {
+        flex: 1,
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
     },
     cardText: {
         fontSize: 24,

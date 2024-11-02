@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomColor: 'rgb(0, 16, 122)',
-        borderBottomWidth: 5,
+        borderBottomWidth: 4,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20
 
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         width: '40%',
         justifyContent: 'center',
         borderBottomColor: 'rgb(0, 16, 122)',
-        borderBottomWidth: 5,
+        borderBottomWidth: 4,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20
     },
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         width: '77%',
         height: '10%',
         marginBottom: 20,
-        padding: 10,
+        padding: 5
     },
     signinBtn: {
         borderRadius: 10,
@@ -213,6 +213,20 @@ const styles = StyleSheet.create({
         borderBottomWidth: 5,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20
+    },
+    remeberMeContainer: {
+        width: '77%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginBottom: 10
+    },
+    checkbox: {
+        borderColor: 'white',
+        borderWidth: 1,
+        width: 12,
+        height: 12,
+        marginRight: 5
     },
     blurView: {
         ...StyleSheet.absoluteFillObject,
