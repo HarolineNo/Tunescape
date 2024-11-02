@@ -8,12 +8,13 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './index';
 import { RadioButton } from 'react-native-paper';
 import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient'; //
 
 
 type QuizScreen = NativeStackNavigationProp<RootStackParamList, 'Quiz'>;
 
 const questions = [
-    { question: 'What type of music do you prefer?', options: ['Nature Sounds', 'Classical', 'Jazz', 'Ambient', 'Electronic', 'No Preference'] }, 
+    { question: 'What type of music do you prefer?', options: ['Electronic', 'Jazz', 'Lofi', 'Ambient', 'No Preference'] }, 
     { question: 'Which instruments do you enjoy the most in instrumental music?', options: ['piano', 'guitar', 'strings', 'synths', 'percussion', 'no preference'] },
     { question: 'What tempo do you prefer?', options: ['slow', 'moderate', 'fast', 'no preference'] },
     { question: 'How energetic do you want the music to be?', options: ['calm and soothing', 'lively and upbeat'] }
@@ -35,23 +36,25 @@ export default function Quiz() {
                 <View style={styles.optionsContainer}>
                     <BlurView intensity={30} style={styles.blurView} />
                     {questions[0].options.map((option, index) => (
-                        <View key={index} style={styles.radioBtn}>
-                            <RadioButton
-                                value={`option${index}`}
-                                status={selectedValue === `option${index}` ? 'checked' : 'unchecked'}
-                                onPress={() => setSelectedValue(`option${index}`)}
-                                color="#007BFF"
-                                />
-                            <Text style={styles.btnText}>{option}</Text>
-                        </View>
+                        <TouchableOpacity
+                            key={index}
+                            style={[styles.optionBtn, selectedValue === `option${index}` && styles.selectedOption]}
+                            onPress={() => setSelectedValue(`option${index}`)}
+                        >
+                            <Text style={[styles.optionText, selectedValue === `option${index}` && styles.selectedOptionText]}>{option}</Text>
+                        </TouchableOpacity>
                     ))}  
                 </View>
                 <View style={styles.btnContainer}>
                     <TouchableOpacity style={styles.btn}>
-                        <Text>Previous</Text>
+                        <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                            <Text style={styles.btnText}>Previous</Text>
+                        </LinearGradient>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btn}>
-                        <Text>Next</Text>
+                    <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                            <Text style={styles.btnText}>Next</Text>
+                        </LinearGradient>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -81,6 +84,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         bottom: 40,
     },
+    optionText: {
+        color: 'white',
+        fontSize: 24,
+        marginLeft: '2%',
+    },
     btnText: {
         color: 'white',
         fontSize: 24,
@@ -88,26 +96,33 @@ const styles = StyleSheet.create({
     numsAndQuestionContainer: {
         flex: 1,
         marginHorizontal: 'auto',
-        marginTop: '15%',
-        padding: 5,
+        marginTop: '20%',
+        padding: 7,
     },
     question: {
         color: 'white',
-        fontSize: 35,
+        fontSize: 38,
         justifyContent: 'center',
     },
     questionNumber: {
         color: 'white',
-        fontSize: 22,
+        fontSize: 30,
+        fontWeight: 'bold',
         alignItems: 'flex-start',
         marginBottom: '5%',
     },
-    radioBtn: {
+    optionBtn: {
         flexDirection: 'row',
         width: '100%',
         padding: 10,
         alignItems: 'center',
-        borderRadius: 20,
+        backgroundColor: 'rgba(150,150,150,0.15)',
+    },
+    selectedOption: {
+        backgroundColor: 'rgba(0, 255, 233, 1)', 
+    },
+    selectedOptionText: {
+        color: 'black', 
     },
     blurView: {
         ...StyleSheet.absoluteFillObject,
@@ -115,13 +130,26 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center',
+        width: '95%',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        bottom: 20,
+        marginTop: '5%',
     },
     btn: {
-        backgroundColor: 'blue',
-        borderRadius: 15,
-        width: '20%',
+        backgroundColor: '#6c00fa',
+        borderRadius: 10,
+        width: '35%',
+        height: 50,
         alignItems: 'center',
+        justifyContent: 'center',
+    },
+    gradientBtn: {
+        flex: 1,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: 50,
     },
 });
