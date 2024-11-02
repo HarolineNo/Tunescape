@@ -24,87 +24,87 @@ export default function Quiz() {
     const [checked, setChecked] = useState(false);
 
     return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
         <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
             <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
-            <Text style={styles.questionNumber}>1/4</Text>
-            <Text style={styles.question}>What kind of music do you prefer</Text>
-            <View style={styles.optionsContainer}>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="first"
-                        status={selectedValue === 'first' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('first')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Classical</Text>
+            <ImageBackground source={require('../../assets/images/dots-bg.png')} resizeMode='cover' style={styles.image}>
+                <Text style={styles.questionNumber}>1/4</Text>
+                <Text style={styles.question}>What kind of music do you prefer</Text>
+                <View style={styles.optionsContainer}>
+                    <BlurView intensity={40} style={[StyleSheet.absoluteFillObject, {borderRadius: 20}]} />
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="first"
+                            status={selectedValue === 'first' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('first')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Classical</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="second"
+                            status={selectedValue === 'second' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('second')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Ambient</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="third"
+                            status={selectedValue === 'third' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('third')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Jazz</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="fourth"
+                            status={selectedValue === 'fourth' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('fourth')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Electronic</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="fifth"
+                            status={selectedValue === 'fifth' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('fifth')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Nature Sounds</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="sixth"
+                            status={selectedValue === 'sixth' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('sixth')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>Cinematic</Text>
+                    </View>
+                    <View style={styles.radioBtn}>
+                        <RadioButton
+                            value="seventh"
+                            status={selectedValue === 'seventh' ? 'checked' : 'unchecked'}
+                            onPress={() => setSelectedValue('seventh')}
+                            color="#007BFF"
+                            />
+                        <Text style={styles.btnText}>No Preference</Text>
+                    </View>
                 </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="second"
-                        status={selectedValue === 'second' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('second')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Ambient</Text>
-                </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="third"
-                        status={selectedValue === 'third' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('third')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Jazz</Text>
-                </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="fourth"
-                        status={selectedValue === 'fourth' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('fourth')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Electronic</Text>
-                </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="fifth"
-                        status={selectedValue === 'fifth' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('fifth')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Nature Sounds</Text>
-                </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="sixth"
-                        status={selectedValue === 'sixth' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('sixth')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>Cinematic</Text>
-                </View>
-                <View style={styles.radioBtn}>
-                    <RadioButton
-                        value="seventh"
-                        status={selectedValue === 'seventh' ? 'checked' : 'unchecked'}
-                        onPress={() => setSelectedValue('seventh')}
-                        color="#007BFF"
-                        />
-                    <Text style={styles.btnText}>No Preference</Text>
-                </View>
-            </View>
+            </ImageBackground>
         </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#08081e',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     image: {
         flex: 1,
@@ -116,7 +116,9 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         width: '90%',
         borderRadius: 20,
-        backgroundColor: 'rgba(197,214,255,0.5)',
+        backgroundColor: 'rgba(197,214,255,0.2)',
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,0.15)'
     },
     btnText: {
         color: 'white',
@@ -136,5 +138,6 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10,
         alignItems: 'center',
+        borderRadius: 20,
     },
 });
