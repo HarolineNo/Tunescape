@@ -31,14 +31,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function HomeScreen() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Signup' component={TabFiveScreen} />
-      <Stack.Screen name='Login' component={TabSixScreen} />
-      <Stack.Screen name='Instructions' component={Instructions} />
-      <Stack.Screen name='Quiz' component={Quiz} />
-      <Stack.Screen name='Question2' component={Question2} />
-      <Stack.Screen name='Question3' component={Question3} />
-      <Stack.Screen name='Question4' component={Question4} />
-      <Stack.Screen name='Genres' component={TabThreeScreen} />
+      <Stack.Screen name='Signup' component={TabFiveScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='Login' component={TabSixScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='Instructions' component={Instructions} options={{ headerShown: false }} />
+      <Stack.Screen name='Quiz' component={Quiz} options={{ headerShown: false }} />
+      <Stack.Screen name='Question2' component={Question2} options={{ headerShown: false }} />
+      <Stack.Screen name='Question3' component={Question3} options={{ headerShown: false }} />
+      <Stack.Screen name='Question4' component={Question4} options={{ headerShown: false }} />
+      <Stack.Screen name='Genres' component={TabThreeScreen} options={{ headerShown: false }} />
     </Stack.Navigator>  
   );
 }

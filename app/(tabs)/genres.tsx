@@ -8,14 +8,15 @@ const genres = [
     { title: '  Motivation', image: require('../../assets/images/nature.jpg') }
 ];
 
-export default function TabThreeScreen() {
+export default function TabThreeScreen() {    
+
   return (
     <SafeAreaView style={styles.container}>
         <LinearGradient colors={['#151452', '#3533cd']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.background}>
             <ScrollView>
                 <Text style={styles.titleText}>Genres</Text>
                 {genres.map((genre) => (
-                    <TouchableOpacity style={styles.card}>
+                    <TouchableOpacity key={genre.title} style={styles.card}>
                         <ImageBackground style={styles.cardImage} source={genre.image} resizeMode='cover'>
                             <LinearGradient colors={['rgba(0, 0, 150, 0.4)', 'transparent']} style={styles.overlayView} />
                             <Text style={styles.cardText}>{genre.title}</Text>

@@ -59,16 +59,21 @@ export default function TabFiveScreen() {
                     <Text style={styles.titleText}>Tunescape</Text>
                     <View style={styles.chooseBtns}>
                         <TouchableOpacity style={styles.activeBtn}>
-                            <Text style={styles.btnText}>Sign up</Text>
+                            <LinearGradient colors={['#3700b8', '#6c00fa', '#6c00fa']} start={{x:1, y:0}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                                <Text style={styles.btnText}>Sign up</Text>
+                            </LinearGradient>
                         </TouchableOpacity> 
                         <TouchableOpacity style={styles.btn} onPress={switchScreen}>
-                            <Text style={styles.btnText}>Log in</Text>
+                        <LinearGradient colors={['#6c00fa', '#3700b8', '#3700b8']} start={{x:1, y:0}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                                <Text style={styles.btnText}>Log in</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.passwordContainer}>
                         <TextInput 
                             style={styles.passwordField} 
                             placeholder="  Email address" 
+                            placeholderTextColor={'white'}
                             value={email}
                             onChangeText={setEmail}
                         />
@@ -78,6 +83,7 @@ export default function TabFiveScreen() {
                             style={styles.passwordField} 
                             secureTextEntry={!showPassword}
                             placeholder="  Enter Password" 
+                            placeholderTextColor={'white'}
                             value={password}
                             onChangeText={setPassword}
                         />
@@ -93,6 +99,7 @@ export default function TabFiveScreen() {
                             style={styles.passwordField} 
                             secureTextEntry={!showPassword}
                             placeholder="  Confirm Password" 
+                            placeholderTextColor={'white'}
                             value={confirmPassword}
                             onChangeText={setConfirmPassword}
                         />
@@ -103,8 +110,8 @@ export default function TabFiveScreen() {
                                 onPress={toggleShowPassword}
                             />
                     </View>
-                    <TouchableOpacity style={styles.signinBtn} onPress={checkTextInput}>
-                        <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                    <TouchableOpacity style={styles.signinBtn} onPress={handleSubmit}>
+                        <LinearGradient colors={['#ed21ff', '#6c00fa']} start={{x:1, y:0}} end={{x:1, y:1}} style={styles.gradientBtn}>
                             <Text style={styles.btnText}>Sign up</Text>
                         </LinearGradient>
                     </TouchableOpacity>
@@ -158,19 +165,27 @@ const styles = StyleSheet.create({
     activeBtn: {
         borderRadius: 10,
         width: '40%',
-        backgroundColor: 'rgb(0, 166, 255)',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderBottomColor: 'rgb(0, 16, 122)',
+        borderBottomWidth: 5,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
+
     },
     btn: {
         borderRadius: 10,
         width: '40%',
-        backgroundColor: 'rgb(0, 75, 224)',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderBottomColor: 'rgb(0, 16, 122)',
+        borderBottomWidth: 5,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
     },
     btnText: {
         flex: 1,
         fontSize: 24,
+        padding: 10,
         color: 'white',
         textAlign: 'center',
     },
@@ -186,14 +201,18 @@ const styles = StyleSheet.create({
         width: '77%',
         height: '10%',
         marginBottom: 20,
-        padding: 10
+        padding: 10,
     },
     signinBtn: {
         borderRadius: 10,
         width: '77%',
         height: '11%',
         backgroundColor: 'blue',
-        marginTop: 10
+        marginTop: 10,
+        borderBottomColor: 'rgb(0, 16, 122)',
+        borderBottomWidth: 5,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
     },
     blurView: {
         ...StyleSheet.absoluteFillObject,
