@@ -6,15 +6,95 @@ import Checkbox from 'expo-checkbox';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './index';
+import { RadioButton } from 'react-native-paper';
+import { BlurView } from 'expo-blur';
+
 
 type QuizScreen = NativeStackNavigationProp<RootStackParamList, 'Quiz'>;
 
+const questions = [
+    { question: 'What genre of instrumental music do you prefer?', options: ['nature sounds', 'classical', 'jazz', 'ambient', 'electronic', 'cinematic', 'no preference'] }, 
+    { question: 'Which instruments do you enjoy the most in instrumental music?', options: ['piano', 'guitar', 'strings', 'synths', 'percussion', 'no preference'] },
+    { question: 'What tempo do you prefer?', options: ['slow', 'moderate', 'fast', 'no preference'] },
+    { question: 'How energetic do you want the music to be?', options: ['calm and soothing', 'lively and upbeat'] }
+];
+
 export default function Quiz() {
+    const [selectedValue, setSelectedValue] = useState('first');
+    const [checked, setChecked] = useState(false);
+
     return (
     <SafeAreaView style={styles.container}>
-        <TouchableOpacity style={styles.signinBtn}>
-            <Text>Next</Text>
-        </TouchableOpacity>
+        <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
+            <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
+            <Text style={styles.questionNumber}>1/4</Text>
+            <Text style={styles.question}>What kind of music do you prefer</Text>
+            <View style={styles.optionsContainer}>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="first"
+                        status={selectedValue === 'first' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('first')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Classical</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="second"
+                        status={selectedValue === 'second' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('second')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Ambient</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="third"
+                        status={selectedValue === 'third' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('third')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Jazz</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="fourth"
+                        status={selectedValue === 'fourth' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('fourth')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Electronic</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="fifth"
+                        status={selectedValue === 'fifth' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('fifth')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Nature Sounds</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="sixth"
+                        status={selectedValue === 'sixth' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('sixth')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>Cinematic</Text>
+                </View>
+                <View style={styles.radioBtn}>
+                    <RadioButton
+                        value="seventh"
+                        status={selectedValue === 'seventh' ? 'checked' : 'unchecked'}
+                        onPress={() => setSelectedValue('seventh')}
+                        color="#007BFF"
+                        />
+                    <Text style={styles.btnText}>No Preference</Text>
+                </View>
+            </View>
+        </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -26,89 +106,35 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    background: {
+    image: {
         flex: 1,
-    },
-    signinContainer: {
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2e2cb2',
-        height: '60%',
-        width: '85%',
-        borderRadius: 20
+        width: '100%',
+        height: '100%',
     },
-    titleText: {
-        color: 'white',
-        fontSize: 40,
-        textAlign: 'center',
-    },
-    chooseBtns: {
-        flexDirection: 'row',
-        width: '85%',
-        height: '11%',
-        justifyContent: 'center',
-        marginBottom: 50,
-        marginTop: 20,
-    },
-    activeBtn: {
-        borderRadius: 10,
-        width: '40%',
-        backgroundColor: '#c5d6ff',
-        marginLeft: 30,
-    },
-    btn: {
-        borderRadius: 10,
-        width: '40%',
-        backgroundColor: 'blue',
+    optionsContainer: {
+        alignItems: 'flex-start',
+        width: '90%',
+        borderRadius: 20,
+        backgroundColor: 'rgba(197,214,255,0.5)',
     },
     btnText: {
-        flex: 1,
-        fontSize: 24,
-        padding: 10,
         color: 'white',
-        textAlign: 'center',
+        fontSize: 24,
     },
-    inputField: {
-        backgroundColor: '#7797e8',
-        height: '10%',
-        width: '77%',
-        borderRadius: 5,
-        marginBottom: 20,
-        padding: 10
+    question: {
+        color: 'white',
+        fontSize: 35,
     },
-    passwordField: {
-        flex: 1,
+    questionNumber: {
+        color: 'white',
+        fontSize: 15,
+        alignItems: 'flex-start',
     },
-    passwordContainer: {
+    radioBtn: {
         flexDirection: 'row',
+        width: '100%',
+        padding: 10,
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#7797e8',
-        borderRadius: 5,
-        width: '77%',
-        height: '10%',
-        marginBottom: 5,
-        padding: 10
-    },
-    signinBtn: {
-        borderRadius: 10,
-        width: '77%',
-        height: '11%',
-        backgroundColor: 'blue',
-        marginTop: 10
-    },
-    remeberMeContainer: {
-        width: '77%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        marginBottom: 10
-    },
-    checkbox: {
-        borderColor: 'white',
-        borderWidth: 1,
-        width: 12,
-        height: 12,
-        marginRight: 5
     },
 });
