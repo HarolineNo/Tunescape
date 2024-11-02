@@ -11,7 +11,7 @@ import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient'; 
 
 
-type QuizScreen = NativeStackNavigationProp<RootStackParamList, 'Quiz'>;
+type Question2Screen = NativeStackNavigationProp<RootStackParamList, 'Question2'>;
 
 const questions = [
     { question: 'What type of music do you prefer?', options: ['Electronic', 'Jazz', 'Lofi', 'Ambient', 'No Preference'] }, 
@@ -20,12 +20,16 @@ const questions = [
     { question: 'How energetic do you want the music to be?', options: ['Calm and Soothing', 'Lively and Upbeat'] }
 ];
 
-export default function Quiz() {
+export default function Question2() {
     const [selectedValue, setSelectedValue] = useState('first');
-    const navigation = useNavigation<QuizScreen>(); 
+    const navigation = useNavigation<Question2Screen>(); 
 
     const nextQuestion = () => {
-        navigation.navigate('Question2');
+        navigation.navigate('Question3');
+    };
+
+    const previousQuestion = () => {
+        navigation.navigate('Quiz');
     };
 
     return (
@@ -34,12 +38,12 @@ export default function Quiz() {
             <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
             <ImageBackground source={require('../../assets/images/dots-bg.png')} resizeMode='cover' style={styles.image}>
                 <View style={styles.numsAndQuestionContainer}>
-                    <Text style={styles.questionNumber}>1/4</Text>
-                    <Text style={styles.question}>{questions[0].question}</Text>
+                    <Text style={styles.questionNumber}>2/4</Text>
+                    <Text style={styles.question}>{questions[1].question}</Text>
                 </View>
                 <View style={styles.optionsContainer}>
                     <BlurView intensity={30} style={styles.blurView} />
-                    {questions[0].options.map((option, index) => (
+                    {questions[1].options.map((option, index) => (
                         <TouchableOpacity
                             key={index}
                             style={[styles.optionBtn, selectedValue === `option${index}` && styles.selectedOption]}
@@ -50,6 +54,11 @@ export default function Quiz() {
                     ))}  
                 </View>
                 <View style={styles.btnContainer}>
+                    <TouchableOpacity style={styles.btn} onPress={previousQuestion}>
+                        <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
+                            <Text style={styles.btnText}>Previous</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.btn} onPress={nextQuestion}>
                         <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
                             <Text style={styles.btnText}>Next</Text>
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '95%',
         alignSelf: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         bottom: 20,
         marginTop: '5%',
     },

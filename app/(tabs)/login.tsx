@@ -20,6 +20,10 @@ export default function TabSixScreen() {
     const [remeber, setRemeber] = useState(false);
     const navigation = useNavigation<loginScreen>();
 
+    const handleSubmit = () => {
+        navigation.navigate('Instructions');
+    }; 
+
     const switchScreen = () => {
         navigation.navigate('Signup');
     };
@@ -89,9 +93,9 @@ export default function TabSixScreen() {
                         <Checkbox style={styles.checkbox} value={remeber} onValueChange={setRemeber} />
                         <Text style={{color: 'white'}}>Remeber Me</Text>
                     </View>
-                    <TouchableOpacity style={styles.signinBtn}>
+                    <TouchableOpacity style={styles.signinBtn} onPress={handleSubmit}>
                         <LinearGradient colors={['#ed21ff', '#6c00fa', '#3700b8']} start={{x:0, y:1}} end={{x:1, y:1}} style={styles.gradientBtn}>
-                            <Text style={styles.btnText}>Sign up</Text>
+                            <Text style={styles.btnText}>Log in</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                 </View>
