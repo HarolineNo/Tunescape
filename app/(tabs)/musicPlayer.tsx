@@ -1,8 +1,17 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, ImageBackground, Image, View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Animated, useAnimatedValue, SafeAreaView, StyleSheet, ImageBackground, Image, View, Text, TouchableOpacity } from 'react-native';
 import { BlurView } from 'expo-blur';
 
 export default function MusicPlayer() {
+    const pauseButton = require('../../assets/images/pause-button.png');
+    const playButton = require('../../assets/images/play-button.png');
+
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const toogleButton = () => {
+        setIsPlaying(!isPlaying);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode="cover" style={styles.image}>
@@ -16,8 +25,8 @@ export default function MusicPlayer() {
                         <TouchableOpacity style={styles.controlButton}>
                             <Image source={require('../../assets/images/previous-button.png')} style={styles.controlIcon} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.controlButton, styles.playButton]}>
-                            <Image source={require('../../assets/images/play-button.png')} style={styles.controlIcon} />
+                        <TouchableOpacity style={[styles.controlButton, styles.playButton]} onPress={toogleButton}>
+                            <Image source={isPlaying ? pauseButton : playButton} style={styles.controlIcon} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.controlButton}>
                             <Image source={require('../../assets/images/next-button.png')} style={styles.controlIcon} />
