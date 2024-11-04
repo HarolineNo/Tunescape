@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity, TextInput, Button } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import * as SecureStore from 'expo-secure-store';
-import Checkbox from 'expo-checkbox';
+import React, { useState } from 'react';
+import { StyleSheet, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './index';
-import { RadioButton } from 'react-native-paper';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient'; 
+import { questions } from '@/components/questionsAndAnswers';
 
 
 type Question4Screen = NativeStackNavigationProp<RootStackParamList, 'Question4'>;
 
-const questions = [
-    { question: 'What type of music do you prefer?', options: ['Electronic', 'Jazz', 'Lofi', 'Ambient', 'No Preference'] }, 
-    { question: 'Which instruments do you enjoy the most in instrumental music?', options: ['Piano', 'Guitar', 'Strings', 'Synths', 'Percussion', 'No Preference'] },
-    { question: 'What tempo do you prefer?', options: ['Slow', 'Moderate', 'Fast', 'No Preference'] },
-    { question: 'How energetic do you want the music to be?', options: ['Calm and Soothing', 'Lively and Upbeat', 'No Peference'] }
-];
 
 export default function Question4() {
     const [selectedValue, setSelectedValue] = useState('first');

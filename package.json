@@ -21,6 +21,7 @@
     "@react-navigation/native-stack": "^6.11.0",
     "@react-navigation/stack": "^6.4.1",
     "@tonejs/midi": "^2.0.28",
+    "axios": "^1.7.7",
     "expo": "~51.0.28",
     "expo-av": "~14.0.7",
     "expo-blur": "~13.0.2",
