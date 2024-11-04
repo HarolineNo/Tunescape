@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const url = 'https://api.aimlapi.com/generate';
 const headers = {
-  'Authorization': 'Bearer dba239ae3daf426683dc5abafc8b3faa',
+  'Authorization': 'Bearer',
   'Content-Type': 'application/json'
 };
 const payload = {
