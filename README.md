@@ -1,50 +1,7 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+![IMG_0079](https://github.com/user-attachments/assets/1f0165ef-3648-41bc-8041-7e13b59265ec)
+![IMG_0080](https://github.com/user-attachments/assets/eab7699f-bd6e-444c-9077-73c7af563e01)
+![IMG_0081](https://github.com/user-attachments/assets/b144f4ff-cb90-4d0b-a10c-7d23b167d2d9)
+![IMG_0082](https://github.com/user-attachments/assets/39ae8a5b-63b6-40d3-a72c-77e16c1fb831)
+![IMG_0083](https://github.com/user-attachments/assets/e2bfe25b-1379-4764-a6b0-d36a030c4997)
+![IMG_0084](https://github.com/user-attachments/assets/7805bdfd-dd74-4421-91c8-0128c9753885)
+![IMG_0085](https://github.com/user-attachments/assets/a4292176-4a16-4602-b58d-926f0e8bc0f0)
