@@ -6,7 +6,6 @@ import { Audio } from 'expo-av';
 import axios from 'axios';
 import Constants from 'expo-constants';
 
-const API_KEY = 'd4bef36ff24d4f30a013a82d67ff97cd';
 
 const genres = [
     { title: '  Focus', image: require('../../assets/images/nature.jpg'), prompt: 'Create focus music' }, 
@@ -28,7 +27,7 @@ export default function TabThreeScreen() {
             <ScrollView>
                 <Text style={styles.titleText}>Genres</Text>
                 {genres.map((genre) => (
-                    <TouchableOpacity key={genre.title} style={styles.card} onPress={() => generateMusic(genre.prompt)} disabled={isLoading}>
+                    <TouchableOpacity key={genre.title} style={styles.card}>
                         <ImageBackground style={styles.cardImage} source={genre.image} resizeMode='cover'>
                             <LinearGradient colors={['rgba(0, 0, 150, 0.4)', 'transparent']} style={styles.overlayView} />
                             <Text style={styles.cardText}>{genre.title}</Text>
@@ -95,6 +94,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgba(119, 151, 232, 0.7)'
+        backgroundColor: 'rgba(74, 2, 191, 0.2)'
     }
 });
