@@ -94,6 +94,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgba(74, 2, 191, 0.2)'
+        backgroundColor: 'rgba(119, 151, 232, 0.3)'
     }
 });

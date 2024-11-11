@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, ImageBackground, Image, View, Text, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { LinearGradient } from 'expo-linear-gradient'; 
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +21,7 @@ export default function Instructions() {
     <View style={styles.container}>
         <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
             <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
+            <Image source={require('../../assets/images/quiz.png')} resizeMode='contain' style={styles.optionsContainer} />
             <Text style={styles.text}>Complete this short quiz to set your preferences.</Text>
             <TouchableOpacity style={styles.startBtn} onPress={nextScreen}>
                 <LinearGradient colors={['#ed21ff', '#6c00fa']} start={{x:1, y:0}} end={{x:1, y:1}} style={styles.gradientBtn}>
@@ -35,8 +36,6 @@ export default function Instructions() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     background: {
         flex: 1,
@@ -48,10 +47,19 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    optionsContainer: {
+        alignItems: 'center',
+        width: '95%',
+        borderRadius: 20,
+        borderWidth: 2,
+        backgroundColor: 'rgba(150,150,150,0.15)',
+        borderColor: 'rgba(255,255,255,0.25)',
+    },
     text: {
         color: 'white',
         fontSize: 20,
         justifyContent: 'center',
+        textAlign: 'center',
     },
     startText: {
         color: 'white',
