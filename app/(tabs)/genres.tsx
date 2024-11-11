@@ -1,25 +1,34 @@
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
+import { Audio } from 'expo-av';
+import axios from 'axios';
+import Constants from 'expo-constants';
 
+const API_KEY = 'd4bef36ff24d4f30a013a82d67ff97cd';
 
 const genres = [
-    { title: '  Focus', image: require('../../assets/images/nature.jpg') }, 
-    { title: '  Relax', image: require('../../assets/images/nature.jpg') },
-    { title: '  Meditate', image: require('../../assets/images/nature.jpg') },
-    { title: '  Motivation', image: require('../../assets/images/nature.jpg') }
+    { title: '  Focus', image: require('../../assets/images/nature.jpg'), prompt: 'Create focus music' }, 
+    { title: '  Relax', image: require('../../assets/images/relax.jpg'), prompt: 'Create focus music' },
+    { title: '  Meditate', image: require('../../assets/images/meditate.jpg'), prompt: 'Create focus music' },
+    { title: '  Motivation', image: require('../../assets/images/motivate.jpg'), prompt: 'Create focus music' }
 ];
 
 export default function TabThreeScreen() {    
 
-  return (
+    const [isLoading, setIsLoading] = useState(false);
+    const [sound, setSound] = useState(null);
+    
+    
+    return (
     <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../../assets/images/dark-gradient-bg.jpg')} resizeMode='cover' style={styles.image}>
             <BlurView intensity={60} tint='dark' style={StyleSheet.absoluteFillObject} />
             <ScrollView>
                 <Text style={styles.titleText}>Genres</Text>
                 {genres.map((genre) => (
-                    <TouchableOpacity key={genre.title} style={styles.card}>
+                    <TouchableOpacity key={genre.title} style={styles.card} onPress={() => generateMusic(genre.prompt)} disabled={isLoading}>
                         <ImageBackground style={styles.cardImage} source={genre.image} resizeMode='cover'>
                             <LinearGradient colors={['rgba(0, 0, 150, 0.4)', 'transparent']} style={styles.overlayView} />
                             <Text style={styles.cardText}>{genre.title}</Text>
@@ -29,7 +38,7 @@ export default function TabThreeScreen() {
             </ScrollView>
         </ImageBackground>
     </SafeAreaView>
-  );
+    );
 }
 
 const styles = StyleSheet.create({

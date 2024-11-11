@@ -33,6 +33,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "apiKey": "d4bef36ff24d4f30a013a82d67ff97cd"
     }
   }
 }

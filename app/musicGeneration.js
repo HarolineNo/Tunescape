@@ -1,9 +1,11 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
+const API_KEY = 'd4bef36ff24d4f30a013a82d67ff97cd';
 
 const url = 'https://api.aimlapi.com/generate';
 const headers = {
-  'Authorization': 'Bearer dba239ae3daf426683dc5abafc8b3faa',
+  'Authorization': `Bearer ${API_KEY}`,
   'Content-Type': 'application/json'
 };
 const payload = {
